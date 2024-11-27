@@ -1,3 +1,6 @@
 -TODO-
 
 - Let the user choose the camera
+- Load a JSON with the essential config
+- A simple UI
+- values normalizer to range [-1, 1]
