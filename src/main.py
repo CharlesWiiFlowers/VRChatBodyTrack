@@ -3,18 +3,18 @@ import cv2
 
 class Data():
     def convertLines(result) -> dict:
-        #"Left elbow": [0, (0,0,0,0)]
+        
         # "Nose": [0, (0,0,0,0)]
-        track:dict = {"Nose": [0, (0,0,0,0)], "Left elbow": [13, (0,0,0,0)]}
+        track:dict = {"Nose": [0, (0,0,0,0)],
+                      "Left elbow": [13, (0,0,0,0)]}
 
-        for x in track.items():
+        for key, values in track.items():
             # print() # Example: ('Head', [0, (0, 0, 0, 0)])
+            point = result.landmark[values[0]]
+
+            values[1] = ((point.x), (point.y), (point.z), (point.visibility))
             
-            point = result.landmark[x[1][0]]
-
-            x[1][1] = ((point.x), (point.y), (point.z), (point.visibility))
-
-            return track
+        return track
 
 class Main():
     # init class
