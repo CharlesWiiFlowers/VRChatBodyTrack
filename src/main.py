@@ -1,4 +1,5 @@
 from modules.posemark import PoseDetector as pose
+from modules.osc_connection import Message as msg
 import cv2
 
 class Data():
@@ -19,6 +20,7 @@ class Data():
 class Main():
     # init class
     detector = pose()
+    msg = msg()
 
     cap = cv2.VideoCapture(0)
 
@@ -40,7 +42,7 @@ class Main():
         if cv2.waitKey(2) & 0xFF == ord('q'):
             break
 
-        Data.convertLines(pose_landmark)
+        msg.sendMessage(Data.convertLines(pose_landmark))
 
     cap.release()
     cv2.destroyAllWindows()
