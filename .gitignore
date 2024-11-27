@@ -1,0 +1,13 @@
+# 🐍 - Python - 🐍
+env/*
+__pycache__
+
+# 💡- Buildozer - 💡
+bin
+buildozer
+.buildozer
+
+# 🐳 - General - 🐳
+.venv
+.env
+.vscode
