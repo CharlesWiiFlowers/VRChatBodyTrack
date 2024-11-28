@@ -7,14 +7,23 @@ class Data():
         
         # "Nose": [0, (0,0,0,0)]
         track:dict = {"Nose": [0, (0,0,0,0)],
+                      "Left eye (inner)": [1, (0,0,0,0)],
+                      "Left eye": [2, (0,0,0,0)],
+                      "Left eye (outer)": [3, (0,0,0,0)],
+                      "Right eye (inner)": [4, (0,0,0,0)],
+                      "Right eye": [5, (0,0,0,0)],
+                      "Right eye (outer)": [6, (0,0,0,0)],
                       "Left elbow": [13, (0,0,0,0)]}
 
-        for key, values in track.items():
-            # print() # Example: ('Head', [0, (0, 0, 0, 0)])
-            point = result.landmark[values[0]]
+        try:
+            for key, values in track.items():
+                
+                point = result.landmark[values[0]]
 
-            values[1] = ((point.x), (point.y), (point.z), (point.visibility))
-            
+                if point.visibility > 0.6:
+                    values[1] = ((point.x), (point.y), (point.z), (point.visibility))
+        except AttributeError: # This exception ocurred when the camera don't detect people
+            pass        
         return track
 
 class Main():
