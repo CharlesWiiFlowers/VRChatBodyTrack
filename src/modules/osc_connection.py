@@ -1,6 +1,7 @@
 import time
 import pythonosc
 import pythonosc.udp_client
+from modules.utils import Utils
 
 class VarClass():
     def __init__(self):
@@ -12,5 +13,6 @@ class Message(VarClass):
 
     def sendMessage(self, track:dict):
         """Send message using OSC"""
-        self._client.send_message("/input/LookHorizontal", track["Nose"][1][0])
+        # track["Nose"][1][0]
+        self._client.send_message("/input/LookHorizontal", Utils.getYaw(track))
         time.sleep(0.1)
