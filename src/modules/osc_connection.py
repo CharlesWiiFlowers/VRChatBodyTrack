@@ -15,4 +15,5 @@ class Message(VarClass):
         """Send message using OSC"""
         # track["Nose"][1][0]
         self._client.send_message("/input/LookHorizontal", Utils.getYaw(track))
-        time.sleep(0.1)
+        self._client.send_message("/input/LookVertical", Utils.getPitch(track))
+        time.sleep(0.01)
