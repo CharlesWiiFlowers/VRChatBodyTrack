@@ -7,12 +7,14 @@ class Data():
         
         # "Nose": [0, (0,0,0,0)]
         track:dict = {"Nose": [0, (0,0,0,0)],
-                      "Left eye (inner)": [1, (0,0,0,0)],
+                      #"Left eye (inner)": [1, (0,0,0,0)],
                       "Left eye": [2, (0,0,0,0)],
-                      "Left eye (outer)": [3, (0,0,0,0)],
-                      "Right eye (inner)": [4, (0,0,0,0)],
+                      #"Left eye (outer)": [3, (0,0,0,0)],
+                      #"Right eye (inner)": [4, (0,0,0,0)],
                       "Right eye": [5, (0,0,0,0)],
-                      "Right eye (outer)": [6, (0,0,0,0)],
+                      #"Right eye (outer)": [6, (0,0,0,0)],
+                      "Left ear": [7, (0,0,0,0)],
+                      "Right ear": [8, (0,0,0,0)],
                       "Left elbow": [13, (0,0,0,0)]}
 
         try:
