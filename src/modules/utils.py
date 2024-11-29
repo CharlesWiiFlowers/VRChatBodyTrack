@@ -34,3 +34,16 @@ class Utils():
         pitch = (media - center) * Utils.SENSITIVY
 
         return pitch
+
+    def getSlope(track:dict) -> int:
+        """Get the slope rotation"""
+
+        point2X = track["Left eye"][1][0]
+        point5X = track["Right eye"][1][0]
+        point2Y = track["Left eye"][1][1]
+        point5Y = track["Right eye"][1][1]
+
+        slope = (point5Y - point2Y) / (point5X - point2X) * (Utils.SENSITIVY / 10)
+
+        print(slope)
+        return slope
