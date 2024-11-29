@@ -1,6 +1,10 @@
 import cv2
 
 class Utils():
+
+    # How much do you like to move?
+    SENSITIVY:int = 15
+
     def getCameraList():
         """TODO"""
 
@@ -15,6 +19,18 @@ class Utils():
         point2X = track["Left eye"][1][0]
         point5X = track["Right eye"][1][0]
 
-        yaw = ((point2X - center) - (center - point5X)) * 15
+        yaw = ((point2X - center) - (center - point5X)) * Utils.SENSITIVY
 
         return yaw
+    
+    def getPitch(track:dict) -> int:
+        """Get the Pitch rotation"""
+
+        center = track["Nose"][1][1]
+        point7Y = track["Left ear"][1][1]
+        point8Y = track["Right ear"][1][1]
+
+        media = (point7Y + point8Y) / 2
+        pitch = (media - center) * Utils.SENSITIVY
+
+        return pitch
