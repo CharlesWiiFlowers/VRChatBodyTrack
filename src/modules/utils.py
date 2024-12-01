@@ -5,8 +5,14 @@ class Utils():
     # How much do you like to move?
     SENSITIVY:int = 15
 
-    def getCameraList():
-        """TODO"""
+    def getEulerRotation(track:dict):
+        """Get the rotation on euler angles"""
+
+        yaw = Utils.getYaw(track) * 180
+        pitch = Utils.getPitch(track) * 180
+        slope = Utils.getSlope(track) * 180
+
+        return [yaw,pitch,slope]
 
     def normalizer(number):
         """Change an interval of [0,1] to [-1,1]"""
@@ -47,3 +53,4 @@ class Utils():
 
         print(slope)
         return slope
+
