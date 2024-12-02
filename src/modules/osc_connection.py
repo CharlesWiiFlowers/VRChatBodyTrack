@@ -14,7 +14,8 @@ class Message(VarClass):
     def sendMessage(self, track:dict):
         """Send message using OSC"""
         # track["Nose"][1][0]
-        self._client.send_message("/input/LookHorizontal", Utils.getYaw(track))
-        self._client.send_message("/input/LookVertical", Utils.getPitch(track))
-        self._client.send_message("/avatar/parameters/SlopeRotation", Utils.getSlope(track))
+        #self._client.send_message("/input/LookHorizontal", Utils.getYaw(track))
+        #self._client.send_message("/input/LookVertical", Utils.getPitch(track))
+        #self._client.send_message("/avatar/parameters/SlopeRotation", Utils.getSlope(track))
+        self._client.send_message("/tracking/trackers/head/position", Utils.getEulerRotation(track))
         time.sleep(0.01)

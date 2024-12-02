@@ -1,18 +1,18 @@
-import cv2
 
 class Utils():
 
     # How much do you like to move?
     SENSITIVY:int = 15
+    PI:float = 3.141592653589793
 
     def getEulerRotation(track:dict):
         """Get the rotation on euler angles"""
 
-        yaw = Utils.getYaw(track) * 180
-        pitch = Utils.getPitch(track) * 180
-        slope = Utils.getSlope(track) * 180
+        yaw = Utils.getYaw(track) * 90 #* 180 / Utils.PI
+        pitch = Utils.getPitch(track) * 90 #* 180 / Utils.PI
+        slope = Utils.getSlope(track) * 90 #* 180 / Utils.PI
 
-        return [yaw,pitch,slope]
+        return [slope, pitch, yaw]
 
     def normalizer(number):
         """Change an interval of [0,1] to [-1,1]"""
@@ -49,7 +49,11 @@ class Utils():
         point2Y = track["Left eye"][1][1]
         point5Y = track["Right eye"][1][1]
 
+        # This means: m = (Y2 - Y1) / (X2 - X1) -> when 'm' is the slope
         slope = (point5Y - point2Y) / (point5X - point2X) * (Utils.SENSITIVY / 10)
+
+        if slope > 1: slope = 1
+        elif slope < -1: slope = -1
 
         print(slope)
         return slope
